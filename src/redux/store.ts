@@ -1,46 +1,34 @@
 import { combineReducers, createStore, applyMiddleware } from "redux";
 import { reducerPosts } from "./reducers/reducerPosts";
-import { reducerSelectedPost } from "./reducers/reducerSelectedPost";
-import { reducerIsFetching } from "./reducers/reducerIsFetching";
+import { reducerProducts } from "./reducers/reducerProducts";
 import { middlewares } from "./middlewares";
 import { middlewareSaga } from "./middlewares/middlewareSaga";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { takeLatest } from "redux-saga/effects";
 import {
   FETCH_POSTS_LIST_REQUEST,
-  FETCH_COMMENTS_LIST_SUCCESS,
   FETCH_COMMENTS_LIST_REQUEST,
+  FETCH_PRODUCTS_LIST_REQUEST,
+  ACTION_DELETE_PRODUCT_REQUEST,
 } from "./actions";
-import { sagaPostList } from "./sagas";
-import { sagaCommentList } from "./sagas/sagaCommentList";
+
+import { sagaProductsList } from "./sagas/sagaProductsList";
+import { sagaProductDelete } from "./sagas/sagaProductDelete";
 
 const initialState = {
-  posts: {
+  products: {
     list: [],
-    likedIds: [],
-  },
-  selectedPost: {
-    id: 0,
-    comments: {
-      list: [],
-      likedIds: [],
-    },
-  },
-  isFetching: {
-    posts: false,
-    comments: false,
   },
 };
 
 const rootReducer = combineReducers({
-  posts: reducerPosts,
-  selectedPost: reducerSelectedPost,
-  isFetching: reducerIsFetching,
+  products: reducerProducts,
 });
 
 function* rootSaga() {
-  yield takeLatest(FETCH_POSTS_LIST_REQUEST, sagaPostList);
-  yield takeLatest(FETCH_COMMENTS_LIST_REQUEST, sagaCommentList);
+  yield takeLatest(FETCH_PRODUCTS_LIST_REQUEST, sagaProductsList);
+  yield takeLatest(ACTION_DELETE_PRODUCT_REQUEST, sagaProductDelete);
+  //
 }
 
 export const configureStore = () => {
