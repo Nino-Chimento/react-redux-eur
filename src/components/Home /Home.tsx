@@ -64,8 +64,6 @@ const StyledButton = Styled.div`
 
 export const Home: FC = () => {
   const [layout, setLayout] = useState("");
-  console.log(layout);
-
   const productsList = useSelector(selectorProducts);
   const error = useSelector(selectorError);
   const dispatch = useDispatch();

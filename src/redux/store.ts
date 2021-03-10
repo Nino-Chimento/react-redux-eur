@@ -1,13 +1,10 @@
 import { combineReducers, createStore, applyMiddleware } from "redux";
-import { reducerPosts } from "./reducers/reducerPosts";
 import { reducerProducts } from "./reducers/reducerProducts";
 import { middlewares } from "./middlewares";
 import { middlewareSaga } from "./middlewares/middlewareSaga";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { takeLatest } from "redux-saga/effects";
 import {
-  FETCH_POSTS_LIST_REQUEST,
-  FETCH_COMMENTS_LIST_REQUEST,
   FETCH_PRODUCTS_LIST_REQUEST,
   ACTION_DELETE_PRODUCT_REQUEST,
   ACTION_CREATE_PRODUCT_REQUEST,
