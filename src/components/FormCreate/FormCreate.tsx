@@ -21,9 +21,7 @@ const StyledTitle = styled.div`
   font-size: 22px;
   margin: 10px 0 10px 0;
 `;
-const StyledP = styled.p`
-  margin: 0;
-`;
+
 const StyledWrapInput = styled.div`
   margin: 10px 0 20px 0;
   width: 100%;
