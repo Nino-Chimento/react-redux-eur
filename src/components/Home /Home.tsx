@@ -7,6 +7,8 @@ import {
   FETCH_PRODUCTS_LIST_REQUEST,
 } from "../../redux/actions";
 import { selectorProducts } from "../../redux/selectors";
+import { FormCreate } from "../FormCreate/FormCreate";
+import { useFormik } from "formik";
 
 export const Home: FC = () => {
   const productsList = useSelector(selectorProducts);
@@ -22,10 +24,29 @@ export const Home: FC = () => {
     dispatch({ type: ACTION_DELETE_PRODUCT_REQUEST, payload: id });
   };
 
+  const formikCreate = useFormik({
+    initialValues: {
+      title: "",
+      category: "",
+      price: 0,
+      employee: "",
+      description: "",
+    },
+    onSubmit: (values) => {
+      alert(JSON.stringify(values, null, 2));
+    },
+  });
+
   return (
     <>
       <div>
         <h1>title</h1>
+      </div>
+      <div>
+        <FormCreate
+          handleFormLogInChange={formikCreate.handleChange}
+          handleSubmitLogIn={formikCreate.handleSubmit}
+        />
       </div>
       <div>
         {productsList &&
