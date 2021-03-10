@@ -10,14 +10,17 @@ import {
   FETCH_COMMENTS_LIST_REQUEST,
   FETCH_PRODUCTS_LIST_REQUEST,
   ACTION_DELETE_PRODUCT_REQUEST,
+  ACTION_CREATE_PRODUCT_REQUEST,
 } from "./actions";
 
 import { sagaProductsList } from "./sagas/sagaProductsList";
 import { sagaProductDelete } from "./sagas/sagaProductDelete";
+import { sagaProductCreate } from "./sagas/sagaProductCreate";
 
 const initialState = {
   products: {
     list: [],
+    error: "",
   },
 };
 
@@ -28,7 +31,7 @@ const rootReducer = combineReducers({
 function* rootSaga() {
   yield takeLatest(FETCH_PRODUCTS_LIST_REQUEST, sagaProductsList);
   yield takeLatest(ACTION_DELETE_PRODUCT_REQUEST, sagaProductDelete);
-  //
+  yield takeLatest(ACTION_CREATE_PRODUCT_REQUEST, sagaProductCreate);
 }
 
 export const configureStore = () => {

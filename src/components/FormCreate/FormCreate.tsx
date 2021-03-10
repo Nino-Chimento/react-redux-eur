@@ -34,15 +34,6 @@ const StyledWrapButton = styled.div`
   width: 100%;
   text-transform: uppercase;
 `;
-const StyledLink = styled.p`
-  text-align: center;
-  cursor: pointer;
-`;
-const StyledSpan = styled.span`
-  &:hover {
-    border-bottom: 1px solid black;
-  }
-`;
 
 const StyledWrapForm = styled.div`
   width: 100%;
