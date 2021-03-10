@@ -45,14 +45,14 @@ const StyledWrapProducts = Styled.div`
 const StyledWrapProduct = Styled.div`
   border:1px solid black;
   width:30%;
+  height:150px;
   text-align:center;
-  margin-bottom:10px;
   margin:auto;
   margin-bottom: ${(props: { layout: string }) =>
     props.layout === "Panel" ? "10px" : ""};
   width: ${(props: { layout: string }) =>
     props.layout === "Panel" ? "90%" : ""};
-
+  margin-bottom:10px;
 `;
 
 const StyledButton = Styled.div`
