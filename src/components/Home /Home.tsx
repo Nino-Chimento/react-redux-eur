@@ -86,8 +86,17 @@ export const Home: FC = () => {
       employee: "",
       description: "",
     },
-    onSubmit: (values) => {
+    onSubmit: (values, { resetForm }) => {
       dispatch({ type: ACTION_CREATE_PRODUCT_REQUEST, payload: values });
+      resetForm({
+        values: {
+          title: "",
+          category: "",
+          price: 0,
+          employee: "",
+          description: "",
+        },
+      });
     },
   });
 
@@ -106,6 +115,7 @@ export const Home: FC = () => {
         <FormCreate
           handleFormLogInChange={formikCreate.handleChange}
           handleSubmitLogIn={formikCreate.handleSubmit}
+          values={formikCreate.values}
         />
       </StyledForm>
       <div>
@@ -120,14 +130,14 @@ export const Home: FC = () => {
           productsList.map((product: any, index: number) => (
             <StyledWrapProduct key={product.id} layout={layout}>
               <Card
-                title={product.data.title}
-                price={product.data.price}
-                description={product.data.description}
+                title={product.data?.title}
+                price={product.data?.price}
+                description={product.data?.description}
               />
               <StyledButton>
                 <Button
                   variant="secondary"
-                  handleClick={() => deleteProduct(product.id)}
+                  handleClick={() => deleteProduct(product?.id)}
                 >
                   Elimina
                 </Button>

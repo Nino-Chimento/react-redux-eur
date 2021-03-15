@@ -10,7 +10,8 @@ const apiProductCreate: any = async (values: any) => {
     `http://us-central1-test-b7665.cloudfunctions.net/api/stores/ijpxNJLM732vm8AeajMR/products`,
     {
       headers: { "Content-Type": "application/json" },
-      method: "post",
+      mode: "no-cors",
+      method: "POST",
       body: values,
     }
   );

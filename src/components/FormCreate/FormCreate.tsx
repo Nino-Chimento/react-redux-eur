@@ -13,6 +13,13 @@ export interface FormCreateProps {
       : (e: string | React.ChangeEvent<any>) => void;
   };
   handleSubmitLogIn?: (event: React.FormEvent<HTMLFormElement>) => void;
+  values: {
+    title: string;
+    category: string;
+    price: number;
+    employee: string;
+    description: string;
+  };
 }
 
 const StyledWrap = styled.div``;
@@ -52,6 +59,7 @@ export const FormCreate: FC<FormCreateProps> = (props) => {
               name="title"
               type="text"
               handleChange={props.handleFormLogInChange}
+              value={props.values.title}
             />
           </StyledWrapInput>
           <StyledWrapInput>
@@ -62,6 +70,7 @@ export const FormCreate: FC<FormCreateProps> = (props) => {
               name="category"
               type="text"
               handleChange={props.handleFormLogInChange}
+              value={props.values.category}
             />
           </StyledWrapInput>
           <StyledWrapInput>
@@ -73,6 +82,7 @@ export const FormCreate: FC<FormCreateProps> = (props) => {
               type="number"
               min={0}
               handleChange={props.handleFormLogInChange}
+              value={props.values.price}
             />
           </StyledWrapInput>
           <StyledWrapInput>
@@ -83,6 +93,7 @@ export const FormCreate: FC<FormCreateProps> = (props) => {
               name="employee"
               type="text"
               handleChange={props.handleFormLogInChange}
+              value={props.values.employee}
             />
           </StyledWrapInput>
           <StyledWrapInput>
@@ -93,6 +104,7 @@ export const FormCreate: FC<FormCreateProps> = (props) => {
               name="description"
               type="text"
               handleChange={props.handleFormLogInChange}
+              value={props.values.description}
             />
           </StyledWrapInput>
           <StyledWrapButton>
